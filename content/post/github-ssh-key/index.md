@@ -2,6 +2,7 @@
 title = '設定 GitHub SSH 連線公鑰'
 date = 2024-07-22T21:24:40+08:00
 draft = false
+slug = 'setting-up-github-ssh-public-key'
 +++
 
 ## 1. 利用 `ssh-keygen` 產生金鑰
