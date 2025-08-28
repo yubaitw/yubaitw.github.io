@@ -3,8 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yubai 羽白</title>
-<style>
+    <title>寫十年後還會讀的文章</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <style>
       @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap");
       @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
@@ -52,6 +60,7 @@
         font-size: 20px;
         padding: 10px 0;
         margin: 10px 0;
+        font-weight: 600;
         border-bottom: 1px solid #eaecef;
       }
 
@@ -80,6 +89,10 @@
       li {
         font-size: 18px;
         margin-left: 28px;
+      }
+
+      code {
+	  margin: 15px 0;
       }
 
       .container {
@@ -175,27 +188,27 @@
       <div class="about"><a href="/about">about/</a></div>
     </nav>
     <div class="container">
-      
-      <div class="2025">
-        <p class="year">2025</p>
-        <ul class="articles">
-          
-          <li class="article"><a href="posts/timeless_writing">寫十年後還會讀的文章</a></li>
+      <h1 class="title">寫十年後還會讀的文章</h1>
+      <p>比起寫一個月就失去價值的文章，我更希望創作十年後還會有人讀的作品。網路上目前多數貼文、文章活不過半年——了不起的文章一年。隨著時間和熱潮過去，這些作品的價值也隨之消失。經歷時間考驗的文章寥寥無幾，但這些文章才有真正的價值。而我認為，一個創作者應該盡力創作此類作品。</p>
+<p>當然，這不代表所謂「廢文」沒有價值。如同在閣樓翻到陳年的舊照片，多年以後回看這些記憶片刻，又是另一種特別的體驗。不過，私認為「廢文」更適合放在 Mastodon、Instagram、X——或傳統一點，日記——上。「我想別人知道這些事」、「我想幫助別人」、「我想藉此學習、賺錢」，寫部落格的理由該是其中之一，而也正因如此，創作者更該創作恆久的內容——因為這才是資訊世代得到長久注意力的方式。</p>
+<h2>容易過時的文章主題</h2>
+<ul>
+<li>時事</li>
+<li>某個 library、app、program 的用法</li>
+<li>發洩</li>
+<li>書評</li>
+<li>某個時下技術</li>
+</ul>
+<h2>不易過時的文章主題</h2>
+<ul>
+<li>行業精華 &amp; 原則</li>
+<li>人生</li>
+<li>自我提升</li>
+<li>價值觀</li>
+<li>恆常不變的技術（C、Linux）</li>
+<li>對事物本質的深刻思考</li>
+</ul>
 
-          <li class="article"><a href="posts/why-emacs">我為什麼使用 Emacs</a></li>
-          
-        </ul>
-      </div>
-      
-      <div class="2024">
-        <p class="year">2024</p>
-        <ul class="articles">
-          
-          <li class="article"><a href="posts/setting-up-github-ssh-public-key">設定 GitHub SSH 連線公鑰</a></li>
-          
-        </ul>
-      </div>
-      
     </div>
   </body>
 </html>
