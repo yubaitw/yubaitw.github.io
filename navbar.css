@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+
+nav {
+    font-family: "Source Code Pro", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 24px;
+    margin: 15px 0;
+    margin-bottom: 30px;
+}
+
+nav a,
+nav a:visited {
+    text-decoration: none;
+    color: #2e3440;
+}
+
+nav h1 {
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.year {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.article {
+    font-size: 18px;
+}
+
+.about {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+@media (min-width: 992px) {
+    nav {
+        width: 960px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    nav {
+        width: 85vw;
+    }
+}
+
+@media (max-width: 767px) {
+    nav {
+        width: 90vw;
+    }
+}
