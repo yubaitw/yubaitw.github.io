@@ -7,8 +7,17 @@
     box-sizing: border-box;
 }
 
+:root {
+    --font: "Noto Sans TC", monospace;
+    --title-font-size-desktop: 32px;
+    --h2-font-size-desktop: 28px;
+    --h3-font-size-desktop: 24px;
+    --h4-font-size-desktop: 20px;
+    --p-font-size: 18px;
+}
+
 body {
-    font-family: "Noto Sans TC", monospace;
+    font-family: var(--font);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -25,11 +34,10 @@ img {
 }
 
 .container > h1 {
-    font-size: 28px;
+    font-size: var(--title-font-size-desktop);
     padding: 10px 0;
     margin: 10px 0;
     font-weight: 500;
-    border-bottom: 1px solid #eaecef;
 }
 
 strong {
@@ -38,28 +46,26 @@ strong {
 
 h2, h3, h4 {
     padding: 10px 0;
-    margin: 10px 0;
+    margin: 5px 0;
     font-weight: 500;
 }
 
 h2 {
-    font-size: 24px;
-    border-bottom: 1px solid #eaecef;
+    font-size: var(--h2-font-size-desktop);
 }
 
 h3 {
-    font-size: 20px;
-    border-bottom: 1px solid #eaecef;
+    font-size: var(--h3-font-size-desktop);
 }
 
 h4 {
     padding: 5px 0;
     margin: 5px 0;
-    font-size: 18px;
+    font-size: var(--h4-font-size-desktop);
 }
 
 p {
-    font-size: 18px;
+    font-size: var(--p-font-size);
     padding: 10px 0;
 }
 
