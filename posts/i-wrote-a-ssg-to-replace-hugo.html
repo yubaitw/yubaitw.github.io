@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="爲了更多的自由，我放棄使用 Hugo，轉而用 Rust 重頭寫了一個 Static Site Generator (SSG)。" />
+        <title>我用 Rust 寫了一個 Static Site Generator 取代 Hugo</title>
+        <link href="/css/github.css" rel="stylesheet"/>
+        <script src="/js/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <link href="/css/styles.css" rel="stylesheet"/>
+        <link href="/css/navbar.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <nav>
+            <h1><a href="/">yubaitw:~$</a></h1>
+            <div class="about"><a href="/about">about/</a></div>
+        </nav>
+        <div class="container">
+            <h1 class="title">我用 Rust 寫了一個 Static Site Generator 取代 Hugo</h1>
+            <p>近來無事，用 Rust 從頭刻了一個 Static Site Generator——<a href="https://github.com/yubaitw/jet">Jet</a>。</p>
+<p>Static Site Generator 就是 Hugo、Hexo 這些可以將 Markdown 檔案轉成 HTML 的程式。因為很多網站（GitHub Pages、Netlify）可以讓你免費丟靜態的 HTML，所以不少人用 Hugo 或 Hexo 寫部落格，多數中文獨立部落格是用 SSG 生成的。</p>
+<p>之前這個部落格就是用 Hugo 架的。那為什麼我要自己從頭造輪子？有現成的 Hugo、Hexo 不好嗎？</p>
+<h2>為什麼我放棄 Hugo</h2>
+<h3>容易和其他網站撞主題</h3>
+<p>因為常見的 theme 就那些，所以多數人都是從最常見的 theme 挑選。也因此很容易遇到和別人的部落格撞主題的情況。舉之前使用的 theme <a href="https://github.com/CaiJimmy/hugo-theme-stack">Stack</a> 爲例，我能在網路上找到超過三個使用 Stack 的部落格。雖然和別人撞主題不是啥大不了的事，但既然都開自己的部落格了，我認爲還是用個獨特的 theme 比較好。</p>
+<p>那為什麼不從頭寫一個 theme 呢？ Hugo 不是也可以自定義 theme 嗎？</p>
+<h3>Hugo theme 不好寫</h3>
+<p>儘管 Hugo 還算易用，但當我想自定義一些東西時，我總無從下手——尤其是 theme。</p>
+<p>Hugo 的 template 檔案複雜，複雜到我不太想花時間去理解。一個 theme 底下有幾十個模板檔案是常態，而且那些別人寫好的主題也不好更改。與其花大量時間學習寫 theme，我還不如重頭刻一個 blog 更省時間。</p>
+<h3>完全掌握自己網站</h3>
+<p>雖然 Hugo 是 open source project，未來也不太可能出什麼大問題，但我還是不想用 Hugo。因為我無法理解 Hugo 背後的技術原理，也無法照著那些檔案復刻出一個 Hugo。如果某天我沒辦法用 Hugo，我就要重新想個方法來生成部落格。</p>
+<p>那為什麼不一開始就自己寫一個呢？抱著這樣的想法，我開始寫 SSG。</p>
+<h2>程式語言選擇</h2>
+<p>一個好的語言就是成功的一半，選對的語言能省掉很多不必要的麻煩。</p>
+<p>以下是一些我認爲必須滿足的條件。</p>
+<h3>該滿足的條件</h3>
+<h4>有一個好的 package manager &amp; ecosystem</h4>
+<ul>
+<li>好的 package manager = 有更多時間想程式本身</li>
+<li>好的生態 = 有更多時間想整體邏輯</li>
+<li>我不想重頭刻很多東西</li>
+</ul>
+<h4>可以編譯成 executable file</h4>
+<ul>
+<li>可以直接安裝到系統上</li>
+<li>速度比 script 快</li>
+<li>要給別人用也比較方便</li>
+</ul>
+<h4>資料多</h4>
+<ul>
+<li>出問題時比較容易問 GPT</li>
+<li>容易找到幹過類似事情的人</li>
+<li>不用直接看 source code</li>
+</ul>
+<h3>最終選擇——Rust</h3>
+<p>考慮到以上因素，我選擇了 Rust，而非其他我會的語言——Python、C++、TypeScript 或 Racket。</p>
+<p>Python 第一、三點滿足，但 Python 編譯成單一 executable file 很麻煩。我知道有現成方案能解決，但那些方案坑也不少，還不如不用。</p>
+<p>C++ 第二、三點滿足，但 C++ 沒有一個稱得上好用的 package manager （也有可能我沒研究過），<del>而且我也不是很想寫太噁的語言</del>。</p>
+<p>TypeScript 和 Python 原因一樣，我不確定如何編譯成單一 executable file。</p>
+<p>Racket 算一個意外還不錯的選項，但它的 ecosystem 真的很差——雖然理論上寫得了，但我實在不想賭運氣。也許哪天我會用 Racket 重寫吧。</p>
+<p>這下可好了——我熟悉的語言沒有一個符合條件。但經過一番調查後，我最後選擇了 Rust，一個我原本很抗拒的語言。縱使我不喜歡 Rust 的一些設計，Rust 完全符合我的需求——Cargo 可能是目前市面上數一數二好的 package manager，Rust 的整體生態也不錯；Rust 可以直接 run，也可以編譯成單一檔案（甚至可以一行指令直接安裝在系統上）；Rust 社區的 docs 非常詳細，我隨時能找到需要的資料。</p>
+<p>雖然我幾乎沒寫過 Rust，但我毅然決然開始學 Rust 來開發 SSG。</p>
+<h2>如何從頭寫一個 SSG？</h2>
+<h3>Static Site Generator 原理</h3>
+<ol>
+<li>把 Markdown 檔案轉成 HTML。</li>
+<li>把轉換完的 HTML 塞到模板檔案的 <code>&lt;body&gt;</code>，生成完整的 HTML。</li>
+<li>建立輸出的資料夾，並把完整的 HTML 寫入檔案。</li>
+</ol>
+<h3>需要的 Library</h3>
+<ul>
+<li>Markdown Parser ——用來把 Markdown 檔案轉成 HTML</li>
+<li>Template Engine ——把轉換完的 HTML 塞入 template files 對應的位置，生成 HTML</li>
+</ul>
+<h2>開發過程</h2>
+<h3>Prototype</h3>
+<h4>專案架構</h4>
+<pre><code>├── Cargo.lock
+├── Cargo.toml
+├── LICENSE
+├── README.md
+└── src
+    ├── commands.rs
+    ├── generate.rs
+    └── main.rs
+</code></pre>
+<ul>
+<li><code>main.rs</code> 爲程式的起始點，負責處理 command line arguments，並依此執行對應指令</li>
+<li><code>generate.rs</code> 包含所有處理和生成內容的 functions，爲整個程式最重要的檔案</li>
+<li><code>commands.rs</code> 爲對 <code>generate.rs</code> 中的 functions 的包裝，包含每個指令</li>
+</ul>
+<h4>使用的 library</h4>
+<ul>
+<li><a href="https://github.com/mitsuhiko/minijinja">minijinja</a> ——template engine</li>
+<li><a href="https://github.com/serde-rs/serde">serde</a> ——處理 frontmatter、生成文章列表的 JSON</li>
+<li><a href="https://github.com/wooorm/markdown-rs">markdown-rs</a> ——處理 Markdown</li>
+<li><a href="https://github.com/imbolc/markdown-frontmatter">markdown_frontmatter</a> ——讀取 frontmatter</li>
+<li><a href="https://github.com/chronotope/chrono">chrono</a> ——處理文章日期</li>
+</ul>
+<h4>成果</h4>
+<p>我大概花了三天寫出了 prototype，能做到：</p>
+<ul>
+<li>新增文章</li>
+<li>自定義 theme</li>
+<li>生成最後要丟到 GitHub Pages 的 static files</li>
+</ul>
+<h3>在 local 預覽效果</h3>
+<p>Hugo 有提供 <code>hugo server</code> 可以在 local 預覽網站。我完成 prototype 後覺得這功能不錯，所以又花了點時間寫這功能。</p>
+<p>爲了實現這功能，我需要一個 web framework（其實能跑 http server 就行）。問了一下 GPT 後，我選擇使用 <a href="https://github.com/tokio-rs/axum">axum</a> 。</p>
+<p>開發過程非常順利，一個早上就寫完功能了。axum 設計不複雜，和一般的 framework 相差無幾。</p>
+<!-- ### 設定輸出資料夾 -->
+<h2>目前實現的功能</h2>
+<ul>
+<li><code>jet create {article}</code> 新增文章</li>
+<li><code>jet serve</code> 在 local 預覽網站</li>
+<li><code>jet build</code> 生成最後能上線的網站檔案</li>
+</ul>
+
+        </div>
+    </body>
+</html>

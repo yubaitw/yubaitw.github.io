@@ -69,6 +69,10 @@ p {
     padding: 10px 0;
 }
 
+pre {
+    margin: 10px 0;
+}
+
 .container a,
 .container a:visited {
     color: #e62727;
@@ -82,7 +86,12 @@ blockquote {
     border-left: 4px solid #ddd;
 }
 
-ul {
+code {
+    color: black;
+    background-color: oklch(94.8% 0.007 247.896);
+}
+
+ul, ol {
     margin: 10px 0;
 }
 
