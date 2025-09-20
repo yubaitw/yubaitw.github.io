@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>yubaitw&apos;s blog</title><link>https://yubaitw.github.io/rss.xml</link><description>一個 Emacs &amp; Linux &amp; 文學廚的部落格</description><item><title>我為什麼使用 Emacs</title><link>https://yubaitw.github.io//posts/why-emacs</link><description><![CDATA[解釋我使用 Emacs 的原因——Flexibility, Power, Keyboard-Driven。]]></description><pubDate>Wed, 27 Aug 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>我從兩年前開始用 Emacs——我通常用它來寫文章（包括目前這篇）、寫程式、問 AI 問題，使用體驗非常好。但是，我周圍的人幾乎都不理解——他們覺得 Emacs 很慢、老、而且很奇怪（可能最後一點是對的）。</p>
+<p>所以，我想來說說我使用 Emacs 作為主力 text editor （和系統）的理由。</p>
+<h2>Flexibility</h2>
+<h3>Emacs 給你真正的自由</h3>
+<p><img src="/images/editor_war.png" alt="" /></p>
+<p>Emacs 允許你做<strong>任何你想要的事</strong>——<strong>真的，就是字面上的意思</strong>。</p>
+<ul>
+<li>不喜歡 modeline？自己刻！</li>
+<li>想看 YouTube 影片？裝個 <a href="https://github.com/emacs-eaf/eaf-browser">瀏覽器的 package</a>。</li>
+<li>覺得 Emacs 很 BLOATED？把不要的 package 砍掉！</li>
+</ul>
+<p>你有權利修改 Emacs 裡的<strong>任何</strong>東西。對，<strong>任何</strong>！</p>
+<p>比起普通的 text editor，Emacs 更像是一個可以任意客製化的作業系統。別的 editors（VSCode、Sublime Text、Helix）隱藏了許多內部細節，讓使用者只能修改特定配置。使用者也很難直接看到 plugins 背後的運作原理 &amp; source code（除非是 open source），更別提更改這些 plugins 了。但在 Emacs 中，使用者能定製幾乎一切、見到 plugins 的 source code。</p>
+<h3>Emacs Lisp - Emacs 的靈魂所在</h3>
+<p>Emacs Lisp （Elisp）是 Emacs 的核心和魅力所在。Emacs Lisp 是 Emacs 的 configuration language，是一個完整的程式語言，也是 Emacs 和其他編輯器差異最大之處。</p>
+<p>一般的 text editor（比如 VSCode、Sublime Text、Zed）通常是 out of box，安裝完即可使用，configuration language (通常是 JSON、TOML）的存在是為了讓使用者小修小改。想開發自己的 plugin？ 可以，但你得用另外一個語言（Python、JavaScript）。</p>
+<p>Emacs 則不然。Emacs 的 core 為一個由 C 寫成的 Emacs Lisp interpreter，剩下所有的功能都是用 Emacs Lisp 寫成的。而 Emacs 也讓你能用 Emacs Lisp 隨意調整 Emacs，<strong>一切細節都公開透明</strong>。對於你不喜歡的預設功能，你總可以用 Emacs Lisp 改個變數、跑個 function 修改（或自己從頭寫！）。只要五分鐘，任何人都能輕鬆寫出一個 package &amp; 使用。</p>
+<p>而且自從教主 RMS （Richard Stallman）在 1984 年開發出 GNU Emacs 第一版以來，Emacs Lisp 幾乎沒有太大的改動——這代表<strong>你二十年前用 Emacs Lisp 寫的 package 到現在還能用</strong>！舉個現實的例子，目前 Emacs 最有名的 package <a href="https://orgmode.org">Org Mode</a> 便是二十年前一個教授所寫的。</p>
+<p>過去二十年來，無數 Emacs 高手寫了優秀、強大的 package。這些 package 很多都放在 <a href="https://melpa.org/#/">MELPA</a> 上，只要 <code>M-x package-install package</code> 就可以安裝使用。這些 package 就只是一個個 Emacs Lisp file，所以你也可以更改、研究背後的功能。只要你電腦上有 Emacs，<strong>這些 package 都能用一輩子</strong>！</p>
+<h3>只要一小時，就能寫出 plugin</h3>
+<p>如果你願意花點時間（大概一個小時）學習 Emacs Lisp，你就能隨心所欲寫出你想要的 plugin。只要五分鐘，你就能寫一個很簡單的功能加到 Emacs 裡。</p>
+<p>我在 Emacs 中裝了個能使用 Gemini、ChatGPT 等 LLM 的 package <a href="https://github.com/karthink/gptel">gptel</a>，讓我能高效使用 LLM。但有個問題：我沒辦法輕鬆管理 prompts。所以，我花了一個多小時簡單寫了個小 function，完美解決這個問題。這個 function 會去 <code>.emacs.d/misc/prompts</code> 下抓所有 <code>txt</code> 檔（每個 <code>txt</code> 檔都是一個 prompt），載入到 gptel 中，之後我只要稍微按幾個鍵就能切換 system prompt。</p>
+<p>只要花幾個小時投入，你就能獲得一個<strong>真正屬於你的 text editor</strong>。</p>
+<h2>Power</h2>
+<h3>良好的 plugin ecosystem</h3>
+<p><img src="https://imgs.xkcd.com/comics/real_programmers.png" alt="" /></p>
+<p>Emacs 作爲歷史最悠久的現存 editor，無數 Emacser 爲 Emacs 開發了 packages。其中不少 packages 能讓 Emacs 使用體驗上和 VSCode、JetBrains IDE 毫無區別，甚至有過之而無不及。</p>
+<p><a href="https://github.com/emacs-lsp/lsp-mode">LSP Mode</a> 可以讓 Emacs 獲得如同 VSCode 的 completion 體驗，輕鬆打造 C/C++/Python/JavaScript IDE。</p>
+<p><a href="https://orgmode.org">Org Mode</a> 自成一家，足以替代 Notion、Obsidian 等一衆筆記軟體。</p>
+<p><a href="https://github.com/karthink/gptel">gptel</a> 能讓你同時用 GPT、Claude、Gemini 等 models，並將對話存成 Markdown 檔案。</p>
+<p><a href="https://magit.vc/">Magit</a> 讓 Git 變得方便無比，再也不用記憶複雜的指令。</p>
+<p>在其他 editors 中，你很難找到如此豐富、強大的 plugins，但這一起在 Emacs 中都有。</p>
+<p>而且不少優秀 packages 可以互相搭配，達到 1+1 &gt; 2 的效果。<a href="https://github.com/company-mode/company-mode">Company Mode</a> 是一個 completion frontend，能根據檔案類型提供不同的 completion。我設定了 company-ispell，讓 Emacs 可以 auto-complete 英文單字。而 <a href="https://github.com/joostkremers/writeroom-mode">Writeroom-mode</a> 讓 Emacs 變得像 Typora 一樣簡潔，搭配上 company-ispell，Emacs 就變成一個好用的 Markdown Editor。</p>
+<p>一個配置好的 Emacs 可以是：</p>
+<ul>
+<li>一個完全不用滑鼠、更不吃 RAM 的 VSCode + Terminal</li>
+<li>一個比 Notion、Evernote 更自由、靈活的筆記軟體</li>
+<li>一個可以任意切換 Model、搜尋對話記錄的 LLM Client</li>
+<li>、、、</li>
+</ul>
+<!-- ### 一些範例 -->
+<!-- #### 快速搜尋 & 替換某個 keyword -->
+<!-- #### 自動補全英文單字 -->
+<!-- #### 根據 Staging Area 的內容自動生成 Commit Message -->
+<h2>Keyboard-Driven</h2>
+<p><img src="https://img-9gag-fun.9cache.com/photo/37474_460s.jpg" alt="" /></p>
+<p>Programming 需要極高的專注力，所以 Editor 必須儘可能減少不必要的干擾，讓 Programmer 能進入「心流」狀態——腦中只有螢幕上的程式，隨時將心中的想法透過鍵盤輸入，化諸一行行 code。若想進入如此狀態，一個不仰賴滑鼠的環境不可或缺。如果一個 Editor/IDE 讓 Programmer 頻繁在滑鼠/鍵盤兩者間切換，Programmer 就無法輕易進入「心流」。</p>
+<p>Emacs （和宿敵 Vim）皆是上個世紀文字介面時代的產物，所以你使用 Emacs 時可以完全不碰滑鼠，純粹依靠鍵盤來輸入、移動，達到極高的編輯效率。而這也是很多高手喜歡 Vim/Emacs 的原因——一切都能使用鍵盤操作，減少不必要的心理負擔，讓人可以更專注在程式本體。</p>
+<p>網路上有不少人批評 Emacs 傷手——這實際上也算事實，Emacs 內建的快捷鍵真的不是給一般人用的——又多又雜，而且幾乎沒有啥規律——<code>C-x C-c</code> 是退出、<code>C-x C-s</code> 是存檔、<code>C-x b</code> 是切換 buffer（類似其他 editor 的 tab）。儘管也有不少 Emacser 喜歡原生的 keybindings，但我想對大部分人而言，如此的操作方式讓人卻步。</p>
+<p>但是有一群 Emacs hacker 寫了 <a href="https://github.com/emacs-evil/evil">Evil</a> 。Evil 讓你可以在 Emacs 用 Vim 的 keymaps（我知道聽起來有點邪教），體驗上和 Neovim/Vim 幾乎毫無差異！而 <a href="https://github.com/noctuid/general.el">general.el</a> 可以實現 Vim 中的 leader keys，設定上比 Neovim/Vim 那套方法更好理解。</p>
+<p>我目前的 Emacs 就定義了好幾個 shortcuts:</p>
+<ul>
+<li><code>SPC f f</code> 搜尋檔案</li>
+<li><code>SPC m s</code> 開啟 Magit (一個 Git 前端）</li>
+<li><code>SPC g g</code> Ripgrep 搜尋特定關鍵字</li>
+<li><code>SPC c p</code> 編譯、輸入測資、執行 C++ 程式（競程）</li>
+</ul>
+<p>再舉個例子，我時常使用 Gemini、ChatGPT 問程式問題。</p>
+<p>在 VSCode 中，如果我想打開 GitHub Copilot 問問題，我必須用滑鼠打開右邊的 tab、輸入 prompt、再用滑鼠複製回答。</p>
+<p>但在 Emacs 中，我可以直接 <code>SPC g p</code> 開一個空的 chat、輸入完問題按 <code>C-C &lt;return&gt;</code> 得到答案，再用 Emacs keymap 複製答案。整個過程不用滑鼠，也快上不少。</p>
+<h2>總結</h2>
+<p>試試看 Emacs 吧。可以用用看我的 <a href="https://codeberg.org/yubaitw/emacs.d">emacs.d</a>，或是用成熟的 configuration （比如 <a href="https://github.com/doomemacs/doomemacs">Doom Emacs</a>）。</p>
+<p>你會喜歡上 Emacs 的 :)</p>
+]]></content:encoded></item><item><title>設定 GitHub SSH 連線公鑰</title><link>https://yubaitw.github.io//posts/setting-up-github-ssh-public-key</link><description><![CDATA[如何在本機生成 SSH Key，並加入 GitHub。]]></description><pubDate>Mon, 22 Jul 2024 12:00:00 +0000</pubDate><content:encoded><![CDATA[<h2>1. 利用 <code>ssh-keygen</code> 產生金鑰</h2>
+<p>在 terminal 底下輸入以下指令：</p>
+<pre><code>ssh-keygen -t ed25519 -C &quot;youremail@example.com&quot;
+</code></pre>
+<p>其中的 <code>youremail@example.com</code> 要換成你註冊 GitHub 時所用的 email。</p>
+<p><code>ssh-keygen</code> 會讓你設定金鑰儲存的地方，預設會在 <code>~/.ssh/id_ed25519</code> ，若不想變更按 <code>Enter</code> 鍵即可。</p>
+<p>接著它還會讓你設定 passphrase ，一樣按 <code>Enter</code> 鍵跳過就行。</p>
+<h2>2. 複製剛剛設定的金鑰</h2>
+<p>在 terminal 底下輸入以下指令輸出給 GitHub 的公鑰，並將其複製：</p>
+<pre><code>cat ~/.ssh/id_ed25519.pub
+</code></pre>
+<h2>3. 將金鑰新增至 GitHub</h2>
+<p>打開 <a href="https://github.com/settings/keys">GitHub 設定金鑰的頁面</a>，按下畫面中的 <strong>New SSH key</strong>，貼上剛剛複製的公鑰，按下確定後即設定完成。</p>
+<p>此時你可以用 <code>ssh</code> clone 隨意一個 repo 看看，如果 clone 的了就是設定成功了。</p>
+]]></content:encoded></item><item><title>我推的內容（不定期更新）</title><link>https://yubaitw.github.io//posts/what-i-recommend</link><description><![CDATA[記錄值得推薦的部落格、書籍、動漫、遊戲和電影]]></description><pubDate>Sat, 20 Sep 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<h2>前言</h2>
+<p>下午在刷 RSS Reader 時，我突然覺得來整理一個「我會推薦給別人的清單」是個好點子。所以這篇文章會收錄（幾乎）所有我欣賞的內容，包含部落格、書籍、動漫、遊戲和電影等等。</p>
+<p><strong>排名不分前後</strong>。</p>
+<h2>部落格</h2>
+<ul>
+<li><a href="https://www.yinwang.org/">当然我在扯淡</a></li>
+<li><a href="https://manateelazycat.github.io/">Manateelazycat</a></li>
+<li><a href="https://ramsayleung.github.io/zh/">菠萝油与天光墟</a></li>
+<li><a href="https://blog.huli.tw/">Huli's Blog</a></li>
+<li><a href="https://sheracaolity.ghost.io/">Sheracaolity</a></li>
+</ul>
+<h2>書籍</h2>
+<h3>Fiction</h3>
+<ul>
+<li>牧羊少年奇幻之旅</li>
+<li>小王子</li>
+<li>流浪者之歌</li>
+<li>車輪下</li>
+<li>深夜加油站遇見蘇格拉底</li>
+<li>人間失格</li>
+<li>心</li>
+<li>異鄉人</li>
+<li>戰廢品</li>
+<li>福爾摩斯探案</li>
+</ul>
+<h3>Non-fiction</h3>
+<ul>
+<li>賈伯斯傳</li>
+<li>最後十四堂星期二的課</li>
+<li>原子習慣</li>
+<li>黑馬思維</li>
+<li>當下的力量</li>
+<li>僧人心態</li>
+<li>與成功有約</li>
+<li>少有人走的路</li>
+<li>毒性羞恥</li>
+</ul>
+<h2>動漫</h2>
+<ul>
+<li>暗殺教室</li>
+<li>我內心的糟糕念頭</li>
+<li>棋靈王</li>
+<li>無職轉生</li>
+<li>FX 戰士久留美</li>
+<li>輝夜姬想讓人告白</li>
+<li>擅長捉弄人的高木同學</li>
+<li>久保同學不放過我</li>
+<li>浪客劍心</li>
+</ul>
+<h2>遊戲</h2>
+<ul>
+<li>紀念碑谷 1 &amp; 2</li>
+<li>Minecraft</li>
+</ul>
+<h2>電影</h2>
+<ul>
+<li>肖申克的救贖</li>
+<li>三個傻瓜</li>
+<li>波希米亞狂想曲</li>
+</ul>
+]]></content:encoded></item><item><title>我用 Rust 寫了一個 Static Site Generator 取代 Hugo</title><link>https://yubaitw.github.io//posts/i-wrote-a-ssg-to-replace-hugo</link><description><![CDATA[爲了更多的自由，我放棄使用 Hugo，轉而用 Rust 重頭寫了一個 Static Site Generator (SSG)。]]></description><pubDate>Sun, 7 Sep 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>近來無事，用 Rust 從頭刻了一個 Static Site Generator——<a href="https://github.com/yubaitw/jet">Jet</a>。</p>
+<p>Static Site Generator 就是 Hugo、Hexo 這些可以將 Markdown 檔案轉成 HTML 的程式。因為很多網站（GitHub Pages、Netlify）可以讓你免費丟靜態的 HTML，所以不少人用 Hugo 或 Hexo 寫部落格，多數中文獨立部落格是用 SSG 生成的。</p>
+<p>之前這個部落格就是用 Hugo 架的。那為什麼我要自己從頭造輪子？有現成的 Hugo、Hexo 不好嗎？</p>
+<h2>為什麼我放棄 Hugo</h2>
+<h3>容易和其他網站撞主題</h3>
+<p>因為常見的 theme 就那些，所以多數人都是從最常見的 theme 挑選。也因此很容易遇到和別人的部落格撞主題的情況。舉之前使用的 theme <a href="https://github.com/CaiJimmy/hugo-theme-stack">Stack</a> 爲例，我能在網路上找到超過三個使用 Stack 的部落格。雖然和別人撞主題不是啥大不了的事，但既然都開自己的部落格了，我認爲還是用個獨特的 theme 比較好。</p>
+<p>那為什麼不從頭寫一個 theme 呢？ Hugo 不是也可以自定義 theme 嗎？</p>
+<h3>Hugo theme 不好寫</h3>
+<p>儘管 Hugo 還算易用，但當我想自定義一些東西時，我總無從下手——尤其是 theme。</p>
+<p>Hugo 的 template 檔案複雜，複雜到我不太想花時間去理解。一個 theme 底下有幾十個模板檔案是常態，而且那些別人寫好的主題也不好更改。與其花大量時間學習寫 theme，我還不如重頭刻一個 blog 更省時間。</p>
+<h3>完全掌握自己網站</h3>
+<p>雖然 Hugo 是 open source project，未來也不太可能出什麼大問題，但我還是不想用 Hugo。因為我無法理解 Hugo 背後的技術原理，也無法照著那些檔案復刻出一個 Hugo。如果某天我沒辦法用 Hugo，我就要重新想個方法來生成部落格。</p>
+<p>那為什麼不一開始就自己寫一個呢？抱著這樣的想法，我開始寫 SSG。</p>
+<h2>程式語言選擇</h2>
+<p>一個好的語言就是成功的一半，選對的語言能省掉很多不必要的麻煩。</p>
+<p>以下是一些我認爲必須滿足的條件。</p>
+<h3>該滿足的條件</h3>
+<h4>有一個好的 package manager &amp; ecosystem</h4>
+<ul>
+<li>好的 package manager = 有更多時間想程式本身</li>
+<li>好的生態 = 有更多時間想整體邏輯</li>
+<li>我不想重頭刻很多東西</li>
+</ul>
+<h4>可以編譯成 executable file</h4>
+<ul>
+<li>可以直接安裝到系統上</li>
+<li>速度比 script 快</li>
+<li>要給別人用也比較方便</li>
+</ul>
+<h4>資料多</h4>
+<ul>
+<li>出問題時比較容易問 GPT</li>
+<li>容易找到幹過類似事情的人</li>
+<li>不用直接看 source code</li>
+</ul>
+<h3>最終選擇——Rust</h3>
+<p>考慮到以上因素，我選擇了 Rust，而非其他我會的語言——Python、C++、TypeScript 或 Racket。</p>
+<p>Python 第一、三點滿足，但 Python 編譯成單一 executable file 很麻煩。我知道有現成方案能解決，但那些方案坑也不少，還不如不用。</p>
+<p>C++ 第二、三點滿足，但 C++ 沒有一個稱得上好用的 package manager （也有可能我沒研究過），<del>而且我也不是很想寫太噁的語言</del>。</p>
+<p>TypeScript 和 Python 原因一樣，我不確定如何編譯成單一 executable file。</p>
+<p>Racket 算一個意外還不錯的選項，但它的 ecosystem 真的很差——雖然理論上寫得了，但我實在不想賭運氣。也許哪天我會用 Racket 重寫吧。</p>
+<p>這下可好了——我熟悉的語言沒有一個符合條件。但經過一番調查後，我最後選擇了 Rust，一個我原本很抗拒的語言。縱使我不喜歡 Rust 的一些設計，Rust 完全符合我的需求——Cargo 可能是目前市面上數一數二好的 package manager，Rust 的整體生態也不錯；Rust 可以直接 run，也可以編譯成單一檔案（甚至可以一行指令直接安裝在系統上）；Rust 社區的 docs 非常詳細，我隨時能找到需要的資料。</p>
+<p>雖然我幾乎沒寫過 Rust，但我毅然決然開始學 Rust 來開發 SSG。</p>
+<h2>如何從頭寫一個 SSG？</h2>
+<h3>Static Site Generator 原理</h3>
+<ol>
+<li>把 Markdown 檔案轉成 HTML。</li>
+<li>把轉換完的 HTML 塞到模板檔案的 <code>&lt;body&gt;</code>，生成完整的 HTML。</li>
+<li>建立輸出的資料夾，並把完整的 HTML 寫入檔案。</li>
+</ol>
+<h3>需要的 Library</h3>
+<ul>
+<li>Markdown Parser ——用來把 Markdown 檔案轉成 HTML</li>
+<li>Template Engine ——把轉換完的 HTML 塞入 template files 對應的位置，生成 HTML</li>
+</ul>
+<h2>開發過程</h2>
+<h3>Prototype</h3>
+<h4>專案架構</h4>
+<pre><code>├── Cargo.lock
+├── Cargo.toml
+├── LICENSE
+├── README.md
+└── src
+    ├── commands.rs
+    ├── generate.rs
+    └── main.rs
+</code></pre>
+<ul>
+<li><code>main.rs</code> 爲程式的起始點，負責處理 command line arguments，並依此執行對應指令</li>
+<li><code>generate.rs</code> 包含所有處理和生成內容的 functions，爲整個程式最重要的檔案</li>
+<li><code>commands.rs</code> 爲對 <code>generate.rs</code> 中的 functions 的包裝，包含每個指令</li>
+</ul>
+<h4>使用的 library</h4>
+<ul>
+<li><a href="https://github.com/mitsuhiko/minijinja">minijinja</a> ——template engine</li>
+<li><a href="https://github.com/serde-rs/serde">serde</a> ——處理 frontmatter、生成文章列表的 JSON</li>
+<li><a href="https://github.com/wooorm/markdown-rs">markdown-rs</a> ——處理 Markdown</li>
+<li><a href="https://github.com/imbolc/markdown-frontmatter">markdown_frontmatter</a> ——讀取 frontmatter</li>
+<li><a href="https://github.com/chronotope/chrono">chrono</a> ——處理文章日期</li>
+</ul>
+<h4>成果</h4>
+<p>我大概花了三天寫出了 prototype，能做到：</p>
+<ul>
+<li>新增文章</li>
+<li>自定義 theme</li>
+<li>生成最後要丟到 GitHub Pages 的 static files</li>
+</ul>
+<h3>在 local 預覽效果</h3>
+<p>Hugo 有提供 <code>hugo server</code> 可以在 local 預覽網站。我完成 prototype 後覺得這功能不錯，所以又花了點時間寫這功能。</p>
+<p>爲了實現這功能，我需要一個 web framework（其實能跑 http server 就行）。問了一下 GPT 後，我選擇使用 <a href="https://github.com/tokio-rs/axum">axum</a> 。</p>
+<p>開發過程非常順利，一個早上就寫完功能了。axum 設計不複雜，和一般的 framework 相差無幾。</p>
+<!-- ### 設定輸出資料夾 -->
+<h2>目前實現的功能</h2>
+<ul>
+<li><code>jet create {article}</code> 新增文章</li>
+<li><code>jet serve</code> 在 local 預覽網站</li>
+<li><code>jet build</code> 生成最後能上線的網站檔案</li>
+</ul>
+]]></content:encoded></item><item><title>寫十年後還會讀的文章</title><link>https://yubaitw.github.io//posts/timeless_writing</link><description><![CDATA[內容創作者應該儘可能創作不被時間淘汰的作品。]]></description><pubDate>Thu, 28 Aug 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>比起寫一個月就失去價值的文章，我更希望創作十年後還會有人讀的作品。網路上目前多數貼文、文章活不過半年——了不起的文章一年。隨著時間和熱潮過去，這些作品的價值也隨之消失。經歷時間考驗的文章寥寥無幾，但這些文章才有真正的價值。而我認為，一個創作者應該盡力創作此類作品。</p>
+<p>當然，這不代表所謂「廢文」沒有價值。如同在閣樓翻到陳年的舊照片，多年以後回看這些記憶片刻，又是另一種特別的體驗。不過，私認為「廢文」更適合放在 Mastodon、Instagram、X——或傳統一點，日記——上。「我想別人知道這些事」、「我想幫助別人」、「我想藉此學習、賺錢」，寫部落格的理由該是其中之一，而也正因如此，創作者更該創作恆久的內容——因為這才是資訊世代得到長久注意力的方式。</p>
+<h2>容易過時的文章主題</h2>
+<ul>
+<li>時事</li>
+<li>某個 library、app、program 的用法</li>
+<li>發洩</li>
+<li>書評</li>
+<li>某個時下技術</li>
+</ul>
+<h2>不易過時的文章主題</h2>
+<ul>
+<li>行業精華 &amp; 原則</li>
+<li>人生</li>
+<li>自我提升</li>
+<li>價值觀</li>
+<li>恆常不變的技術（C、Linux）</li>
+<li>對事物本質的深刻思考</li>
+</ul>
+]]></content:encoded></item><item><title>如何打造想要的人生</title><link>https://yubaitw.github.io//posts/how-to-succeed-naval</link><description><![CDATA[從納瓦爾的貼文談如何成功]]></description><pubDate>Thu, 18 Sep 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p><img src="/images/naval.png" alt="" /></p>
+<p>上圖是 Naval（一個知名天使投資人 &amp; 講者）廣爲人知的 tweet。私認爲這則 tweet 十分中肯且貼切，值得每個人參考。</p>
+]]></content:encoded></item></channel></rss>
