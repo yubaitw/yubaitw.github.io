@@ -226,7 +226,13 @@
 <p>Hugo 有提供 <code>hugo server</code> 可以在 local 預覽網站。我完成 prototype 後覺得這功能不錯，所以又花了點時間寫這功能。</p>
 <p>爲了實現這功能，我需要一個 web framework（其實能跑 http server 就行）。問了一下 GPT 後，我選擇使用 <a href="https://github.com/tokio-rs/axum">axum</a> 。</p>
 <p>開發過程非常順利，一個早上就寫完功能了。axum 設計不複雜，和一般的 framework 相差無幾。</p>
-<!-- ### 設定輸出資料夾 -->
+<h3>設定輸出資料夾</h3>
+<p>Hugo 有個很煩的問題：沒辦法指定最後輸出的資料夾。我用 Git 作版控時需要這個功能（因爲這樣對 Git 比較友好，不會出現同一個 project 下有兩個 Git repo 的狀況），所以這是另外一個我想實現的功能。</p>
+<p>只要用 <code>std::fs</code> 就能完成功能了。</p>
+<h3>RSS</h3>
+<p>原本我沒打算加 RSS——畢竟我平常也不太用 RSS reader，但考量如果我要把這裏加到 <a href="https://github.com/timqian/chinese-independent-blogs">中文独立博客列表</a> ，這部落格還是需要 RSS。</p>
+<p>於是我又加了兩個 library <code>rss</code> 和 <code>toml</code>。<code>rss</code> 用來處理 RSS，<code>toml</code> 則負責讀取 blog 的 config file。</p>
+<p>寫的過程順便重構了一下程式。</p>
 <h2>目前實現的功能</h2>
 <ul>
 <li><code>jet create {article}</code> 新增文章</li>
