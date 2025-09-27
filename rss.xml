@@ -157,6 +157,7 @@
 <ul>
 <li><a href="https://www.yinwang.org/">当然我在扯淡</a></li>
 <li><a href="https://manateelazycat.github.io/">Manateelazycat</a></li>
+<li><a href="https://program-think.blogspot.com/">编程随想的博客</a></li>
 <li><a href="https://ramsayleung.github.io/zh/">菠萝油与天光墟</a></li>
 <li><a href="https://blog.huli.tw/">Huli's Blog</a></li>
 <li><a href="https://sheracaolity.ghost.io/">Sheracaolity</a></li>
@@ -200,6 +201,7 @@
 <li>輝夜姬想讓人告白</li>
 <li>擅長捉弄人的高木同學</li>
 <li>久保同學不放過我</li>
+<li>敗北女角太多了</li>
 <li>浪客劍心</li>
 </ul>
 <h2>遊戲</h2>
@@ -336,6 +338,53 @@
 <li>恆常不變的技術（C、Linux）</li>
 <li>對事物本質的深刻思考</li>
 </ul>
+]]></content:encoded></item><item><title>訴諸權威、滑坡、以人廢言——常見的邏輯謬誤解釋</title><link>https://yubaitw.github.io//posts/common-fallacies</link><description><![CDATA[]]></description><pubDate>Sat, 27 Sep 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<h2>滑坡謬誤</h2>
+<blockquote>
+<p>（這絕對不是真人真事）<br />
+A：「我去學校練吉他哦！」 <br />
+B：「你再玩社團下去就考不上大學了！！！！」</p>
+</blockquote>
+<p>B 的論證大致如下：</p>
+<blockquote>
+<p>玩社團 -&gt; 沒有時間讀書 -&gt; 成績變爛 -&gt; 學測考不好 -&gt; 考不上大學</p>
+</blockquote>
+<p>這一串事件構成了一個「滑坡」——每個事件都會導致下個事件發生。</p>
+<p>但 B 的邏輯中的事件，不一定會導致下個事件發生（A 玩社團不代表 A 會沒時間念書）。</p>
+<h2>訴諸人身</h2>
+<h3>訴諸權威</h3>
+<blockquote>
+<p>A：「我覺得 C 的投資方法不一定正確、、、」 <br />
+B：「怎麼可能？他那麼有錢欸！！」</p>
+</blockquote>
+<p>C 很有錢不代表他的投資方法（就算 C 真的靠投資變有錢，也不代表他的方法是對的）正確——可能他靠著寫投資書、繼承老爸的遺產變得富有，而非透過投資。也有可能 C 是倖存者偏差中的倖存者，使用錯誤的方法得到正確的結果。</p>
+<p>但這不代表我們不能完全相信權威的話。訴諸權威謬誤成立的前提是 <strong>權威所說言論的領域並非他的專業</strong>。</p>
+<p>醫生當然能提出感冒的預防方法，但他並沒有足夠的公信力提出「神是存在的」。</p>
+<h3>以人廢言</h3>
+<blockquote>
+<p>A：「節食不是減肥的最好的方法。」
+B：「你這麼胖，照你說的做又怎麼可能減肥成功？」</p>
+</blockquote>
+<p>「A 胖不胖」和「節食不是最好減肥方法」兩件事並無關聯。即使 A 很胖，他的主張依然可能正確。</p>
+<p>校系歧視也可歸到此類。</p>
+<h2>訴諸未知</h2>
+<blockquote>
+<p>A：「我們無法確定上帝存在與否。」 <br />
+B：「你沒辦法證明上帝不存在，所以上帝存在！」</p>
+</blockquote>
+<p>B 的論證爲：「沒有證據顯示上帝不存在 -&gt; 上帝存在」。但「沒有證據」並不能導出「上帝存在」或「上帝不存在」的結論。</p>
+<p>碰上 B 這種人，有個簡單的反駁方法：</p>
+<blockquote>
+<p>A：「你欠我一百萬。」<br />
+B：「你沒有證據證明你欠我錢！」 <br />
+A：「你也沒有證據證明你沒欠我一百萬，所以你欠我一百萬！」</p>
+</blockquote>
+<h2>稻草人謬誤</h2>
+<blockquote>
+<p>A：「我認爲應立法管制槍支。槍支暴力太過氾濫了。」 <br />
+B：「你反對無辜的人拿武器對付歹徒嗎？」</p>
+</blockquote>
+<p>除了槍以外，無辜的人也能使用刀子、雨傘對付歹徒。B 的反駁和 A 的主張並不衝突。</p>
+<p>A 也沒說過「我反對使用武器自衛」，但 B 曲解 A 的觀點（就像立一個稻草人攻擊）並加以攻擊。</p>
 ]]></content:encoded></item><item><title>如何打造想要的人生</title><link>https://yubaitw.github.io//posts/how-to-succeed-naval</link><description><![CDATA[從納瓦爾的貼文談如何成功]]></description><pubDate>Thu, 18 Sep 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p><img src="/images/naval.png" alt="" /></p>
 <p>上圖是 Naval（一個知名天使投資人 &amp; 講者）廣爲人知的 tweet。私認爲這則 tweet 十分中肯且貼切，值得每個人參考。</p>
 ]]></content:encoded></item></channel></rss>
