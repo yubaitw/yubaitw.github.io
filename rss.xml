@@ -1,4 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>yubaitw&apos;s blog</title><link>https://yubaitw.github.io/rss.xml</link><description>一個 Emacs &amp; Linux &amp; 文學廚的部落格</description><item><title>我為什麼使用 Emacs</title><link>https://yubaitw.github.io//posts/why-emacs</link><description><![CDATA[解釋我使用 Emacs 的原因——Flexibility, Power, Keyboard-Driven。]]></description><pubDate>Wed, 27 Aug 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>我從兩年前開始用 Emacs——我通常用它來寫文章（包括目前這篇）、寫程式、問 AI 問題，使用體驗非常好。但是，我周圍的人幾乎都不理解——他們覺得 Emacs 很慢、老、而且很奇怪（可能最後一點是對的）。</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>yubaitw&apos;s blog</title><link>https://yubaitw.github.io/rss.xml</link><description>一個 Emacs &amp; Linux &amp; 文學廚的部落格</description><item><title>一次搞懂動態類型/靜態類型、強類型/弱類型</title><link>https://yubaitw.github.io//posts/static-dynamic-strong-weak-typed</link><description><![CDATA[]]></description><pubDate>Sat, 1 Nov 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>第一堂資訊課時，電腦老師總會（應該吧）說「C++ 是靜態 &amp; 弱類型語言、Python 是動態 &amp; 強類型語言」。</p>
+<p>但 C++ 又哪裏「靜態」？Python 又為何是「強類型」？</p>
+<p>這篇文章，我想談談「動態/靜態類型」、「強/弱」語言之間的差異。</p>
+<h2>動態類型 &amp; 靜態類型</h2>
+<p>所有語言皆可分成兩種：<strong>動態類型（Dynamic Typed）語言</strong> 和 <strong>靜態類型（Statically Typed）語言</strong>。</p>
+<h3>動態類型（Dynamic Typed）</h3>
+<pre><code class="language-python">x = 1
+# 這時候 x 的 type 是 int，
+print(1) # 1
+
+x = &quot;hello&quot;
+# 這時候 x 的 type 是 str
+print(x) # x
+</code></pre>
+<p>在動態類型語言中，一個變數的 type 可以反覆更改。在上面 Python 的範例中，<code>x</code> 一開始的 type 是 <code>int</code>。經過更改後，type 則變成 <code>str</code>。</p>
+<p>動態類型語言有 Python、JavaScript、Ruby、Lua、PHP、Perl、Racket/Scheme 等。</p>
+<p>幾乎所有的動態語言都經由直譯執行，只有少數語言（例如 Common Lisp 和 Racket）可以直接編譯成執行檔。</p>
+<h4>優點</h4>
+<ul>
+<li>彈性較大，適合做原型</li>
+</ul>
+<p>因爲不必手動標記類型 &amp; 確定變數類型，所以很容易糊出一個程式的原型。不少公司的產品最初都由動態語言編寫，而後才轉到靜態語言。</p>
+<p>Facebook 最初是由 PHP 寫成，後來才陸續有了 C++、Java 等其他語言。</p>
+<ul>
+<li>容易實現泛型</li>
+</ul>
+<p>因爲對 function 的參數沒有類型要求，所以動態語言容易實現「泛型」。</p>
+<pre><code class="language-python">def add(a, b):
+    return a + b
+</code></pre>
+<pre><code class="language-c++">int add(int a, int b) {
+    return a + b
+}
+
+double add(double a, double b) {
+    return a + b
+}
+</code></pre>
+<h2>靜態類型（Statically Typed）</h2>
+<pre><code class="language-c">int main() {
+    int n = 2;
+    n = &quot;String&quot; // 報錯，n 不能賦值爲 &quot;String&quot;
+}
+</code></pre>
+<p>相較之下，靜態語言的變數類型在初始化時便決定，之後也無法再度更改。</p>
+<p>早期的靜態語言（C、C++、Java）必須手動寫出類型標記（範例中的 <code>int</code>），但近二十年出現的靜態語言（C#、Kotlin、Rust、Swift）都支持類型推導（Type Inference），編譯器會幫你判斷變數的類型。</p>
+<p>比如說在 Rust 能這樣寫：</p>
+<pre><code class="language-rust">fn main() {
+    let x = 20; // Rust 知道 x 的類型是 i32
+    println!(&quot;{}&quot;, x);
+}
+</code></pre>
+<p>常見的靜態語言有 C/C++、Java、C#、Rust、Swift、Haskell、OCaml、Kotlin、Golang 等。</p>
+<p>大部分的靜態語言都採用編譯執行，不過也有一些語言（如 OCaml）可以直譯執行。</p>
+<h3>優點</h3>
+<ul>
+<li>嚴謹、不容易出現類型問題</li>
+</ul>
+<p>因爲變數的類型無法更改，所以編譯器能提前找出可能的類型錯誤。</p>
+<p>因此大部分大公司的大 project 都由靜態語言寫成。</p>
+<ul>
+<li>執行速度較快</li>
+</ul>
+<p>因爲靜態語言容易編譯成執行檔，速度較多數採直譯的動態語言快。</p>
+<ul>
+<li>Editor/IDE 支援較好</li>
+</ul>
+<p>因爲編譯器可以由程式中推出變數的類型、一個 class 有哪些函數，所以普遍而言 IDE 對靜態語言的支持較好。</p>
+<p>不過這點在 Microsoft 搞出 LSP 後差距減少不少。</p>
+]]></content:encoded></item><item><title>我為什麼使用 Emacs</title><link>https://yubaitw.github.io//posts/why-emacs</link><description><![CDATA[解釋我使用 Emacs 的原因——Flexibility, Power, Keyboard-Driven。]]></description><pubDate>Wed, 27 Aug 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>我從兩年前開始用 Emacs——我通常用它來寫文章（包括目前這篇）、寫程式、問 AI 問題，使用體驗非常好。但是，我周圍的人幾乎都不理解——他們覺得 Emacs 很慢、老、而且很奇怪（可能最後一點是對的）。</p>
 <p>所以，我想來說說我使用 Emacs 作為主力 text editor （和系統）的理由。</p>
 <h2>Flexibility</h2>
 <h3>Emacs 給你真正的自由</h3>
@@ -200,9 +269,10 @@
 <li>FX 戰士久留美</li>
 <li>輝夜姬想讓人告白</li>
 <li>擅長捉弄人的高木同學</li>
-<li>久保同學不放過我</li>
 <li>敗北女角太多了</li>
 <li>浪客劍心</li>
+<li>Dr. Stone</li>
+<li>One Outs</li>
 </ul>
 <h2>遊戲</h2>
 <ul>
