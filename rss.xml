@@ -421,4 +421,38 @@ double add(double a, double b) {
 <p>Steve Jobs 腦中的 A 類問題是：「如何創造易用的電腦？」於是，iPhone、iPad 因此誕生。</p>
 <p>Elon Musk 腦中的 A 類問題是：「如何降低火箭發射的成本？」於是，SpaceX 成為 NASA 的承包商。</p>
 <p>如果腦中沒有 A 類問題的話，就去找吧。然後全力解決這些 A 類問題。</p>
+]]></content:encoded></item><item><title>2026 新的開始</title><link>https://yubaitw.github.io//posts/2026_new_start</link><description><![CDATA[]]></description><pubDate>Mon, 29 Dec 2025 12:00:00 +0000</pubDate><content:encoded><![CDATA[<p>後天便是 2026 了（時間過得還真快）。</p>
+<p>我為 2026 立下了三個最重要的目標：</p>
+<ul>
+<li>重新設計生活</li>
+<li>完成一個產品的原型</li>
+<li>讀完 CSAPP 前九章</li>
+</ul>
+<h2>重新設計生活</h2>
+<p>說來慚愧，我過去兩年的生活十分混亂：</p>
+<ul>
+<li>沒有明確的作息</li>
+<li>沒有明確的目標</li>
+<li>得過且過，幾乎完全不依賴原則行事</li>
+<li>將時間、精力投入一些自己根本不需在乎的事情</li>
+<li>用各類垃圾（物質上和精神上）糟蹋自己</li>
+</ul>
+<p>所以，我打算重新思考、設計生活方式。</p>
+<p>我目前想到的項目有這些：</p>
+<ul>
+<li>作息</li>
+<li>習慣</li>
+<li>興趣</li>
+<li>原則（哲學）</li>
+<li>飲食</li>
+<li>內容接觸</li>
+</ul>
+<h2>完成一個產品原型</h2>
+<p>關於這項，我無法著墨過多（說出來就不好玩了：））。</p>
+<p>產品方向是語言學習，但應該能把目前市面上多數的同類 App 吊起來打（包含 Duolingo）。</p>
+<p>還請讀者等待。</p>
+<h2>讀完 CSAPP 前九章</h2>
+<p>最近寫個人 Project 有感：底層知識還是挺重要的。別看網上 Vibe Coding 一堆，上生產照樣被幹到飛起。</p>
+<p>CSAPP 作為可能是 Computer Architecture 中最全面的入門書（CMU 的入門，嗯），在國內外頗具盛名。</p>
+<p>考量到時間精力，我大概只會讀到第九章（Virtual Memory）。但應該也夠我用一陣子了。</p>
 ]]></content:encoded></item></channel></rss>
